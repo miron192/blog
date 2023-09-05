@@ -33,7 +33,10 @@ const PostsList = async () => {
           </div>
           <div className="flex gap-3 text-gray-600 mt-auto">
             {post.categories.map((category: Category, i: number) => (
-              <div className="  bg-green-500 rounded-3xl px-3 py-1  text-white">
+              <div
+                key={i}
+                className="  bg-green-500 rounded-3xl px-3 py-1  text-white"
+              >
                 {category.title}{" "}
               </div>
             ))}
