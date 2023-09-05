@@ -33,7 +33,7 @@ interface Category {
 const SampleImageComponent = ({ value }: ImageProps) => {
   const { width, height } = getImageDimensions(value);
   return (
-    <img
+    <Image
       src={urlForImage(value).url()}
       alt={value.alt || " "}
       loading="lazy"
