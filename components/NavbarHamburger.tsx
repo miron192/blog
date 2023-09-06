@@ -79,12 +79,12 @@ export const Hamburger = ({ categoryFilters }: Props) => {
                         </Dialog.Title>
                       </div>
                       <div className="relative mt-6 flex flex-col text-xl gap-5 px-4 sm:px-6">
-                        {categoryFilters.map((item: any, i: number) => (
+                        {categoryFilters.map((item: Category, i: number) => (
                           <Link
                             key={i}
                             href={`/news/${item.slug.current.toLocaleLowerCase()}`}
                           >
-                            {item}
+                            {item.title}
                           </Link>
                         ))}
                       </div>

@@ -4,6 +4,7 @@ import { Hamburger } from "./NavbarHamburger";
 
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
+import { Category } from "@/types";
 
 const Navbar = async () => {
   const categoryFilters = await client.fetch(
@@ -22,7 +23,7 @@ const Navbar = async () => {
       </Link>
 
       <div className="lg:flex gap-3 hidden font-light">
-        {categoryFilters.map((item: any, i: any) => (
+        {categoryFilters.map((item: Category, i: number) => (
           <Link
             key={i}
             href={`/category/${item.slug.current.toLocaleLowerCase()}`}

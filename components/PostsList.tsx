@@ -3,7 +3,7 @@ import Link from "next/link";
 import { client } from "@/sanity//lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 import { groq } from "next-sanity";
-import { Category } from "@/types";
+import { Category, Post } from "@/types";
 import { fetchPosts } from "@/utils";
 
 const PostsList = async () => {
@@ -11,7 +11,7 @@ const PostsList = async () => {
 
   return (
     <>
-      {posts.map((post: any, i: number) => (
+      {posts.map((post: Post, i: number) => (
         <Link
           href={`/post/${post.slug.current}`}
           className=" mx-auto flex flex-col p-6 justify-center items-start text-black-100 border hover:bg-white hover:shadow-md rounded-2xl "
