@@ -5,11 +5,16 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineClose } from "react-icons/ai";
 
 import { Dialog, Transition } from "@headlessui/react";
-import { categoryFilters } from "@/constants";
+
 import Link from "next/link";
 
-export const Hamburger = () => {
+interface Props {
+  categoryFilters: string[];
+}
+
+export const Hamburger = ({ categoryFilters }: Props) => {
   const [open, setOpen] = useState(false);
+  console.log(categoryFilters);
 
   return (
     <div className="lg:hidden cursor-pointer">

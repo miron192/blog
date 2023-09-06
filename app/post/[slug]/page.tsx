@@ -5,6 +5,7 @@ import { urlForImage } from "@/sanity/lib/image";
 import { PortableText } from "@portabletext/react";
 import { getImageDimensions } from "@sanity/asset-utils";
 import Link from "next/link";
+import { Category } from "@/types";
 
 export const dynamic = "force-dynamic";
 
@@ -22,11 +23,6 @@ interface ImageProps {
 
 interface Props {
   params: { slug: string };
-}
-
-interface Category {
-  title: string;
-  slug: string | null;
 }
 
 // Barebones lazy-loaded image component

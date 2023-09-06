@@ -1,5 +1,7 @@
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
+import { Category } from "@/types";
+import { fetchPosts } from "@/utils";
 import { groq } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,27 +9,11 @@ import Link from "next/link";
 interface Props {
   params: { id: string };
 }
-interface Category {
-  title: string;
-  slug: string | null;
-}
 
 const NewsPage = async ({ params }: Props) => {
   const { id } = params;
 
-  const posts = await client.fetch(
-    groq`*[_type == "post" && "${id}" in categories[]->slug.current ] {
-      _id,
-      _createdAt,
-      title,
-      body,
-      categories[]->{title,slug},
-      mainImage,
-     "slug":slug.current,
-     shortDescription
-    }
-    `
-  );
+  const posts: any = fetchPosts(`"${id}" in categories[]->slug.current`);
 
   return (
     <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14 px-7">

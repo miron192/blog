@@ -1,15 +1,11 @@
-export function truncateTextTo130Words(text: string): string {
-  // Split the input text into words
-  const words = text.split(" ");
+import { client } from "@/sanity/lib/client";
+import { groq } from "next-sanity";
 
-  // If the text has 130 words or less, return it as is
-  if (words.length <= 130) {
-    return text;
-  }
+export async function fetchPosts(filter: string = "") {
+  const posts = await client.fetch(
+    groq`*[_type == "post" && ${filter} ] | order(_createdAt desc)  [0...100] {title,slug,mainImage, categories[]->{title,slug}, _createdAt,shortDescription, body}`
+  );
+  if (posts.errors) throw posts.errors;
 
-  // Otherwise, truncate the text to 130 words and add "..."
-  const truncatedWords = words.slice(0, 130);
-  const truncatedText = truncatedWords.join(" ") + "...";
-
-  return truncatedText;
+  return posts;
 }

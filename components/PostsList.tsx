@@ -3,14 +3,11 @@ import Link from "next/link";
 import { client } from "@/sanity//lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 import { groq } from "next-sanity";
+import { Category } from "@/types";
+import { fetchPosts } from "@/utils";
 
 const PostsList = async () => {
-  const posts = await client.fetch(
-    groq`*[_type == "post" ] | order(_createdAt desc)  [0...100] {title,slug,mainImage, categories[]->{title,slug}, _createdAt,shortDescription, body}`
-  );
-  if (posts.errors) throw posts.errors;
-
-  type Category = { title: string; slug: string | null };
+  const posts: any = fetchPosts();
 
   return (
     <>
