@@ -82,7 +82,7 @@ export const Hamburger = ({ categoryFilters }: Props) => {
                         {categoryFilters.map((item: Category, i: number) => (
                           <Link
                             key={i}
-                            href={`/news/${item.slug.current.toLocaleLowerCase()}`}
+                            href={`/category/${item.slug.current.toLocaleLowerCase()}`}
                           >
                             {item.title}
                           </Link>
