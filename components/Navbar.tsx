@@ -12,8 +12,6 @@ const Navbar = async () => {
     }`
   );
 
-  console.log(categoryFilters);
-
   return (
     <div className="flex justify-around h-14 items-center  border-b-2 shadow-sm">
       <Link href="/" className="text-xl font-bold flex  items-center gap-2">

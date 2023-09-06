@@ -1,6 +1,6 @@
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
-import { Category } from "@/types";
+import { Category, Post } from "@/types";
 import { fetchPosts } from "@/utils";
 import { groq } from "next-sanity";
 import Image from "next/image";
@@ -13,11 +13,11 @@ interface Props {
 const NewsPage = async ({ params }: Props) => {
   const { id } = params;
 
-  const posts: any = fetchPosts(`"${id}" in categories[]->slug.current`);
+  const posts = await fetchPosts(`&& "${id}" in categories[]->slug.current`);
 
   return (
     <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14 px-7">
-      {posts.map((post: any, i: number) => (
+      {posts.map((post: Post, i: number) => (
         <Link
           href={`/post/${post.slug.current}`}
           className=" mx-auto flex flex-col p-6 justify-center items-start text-black-100 border hover:bg-white hover:shadow-md rounded-2xl "

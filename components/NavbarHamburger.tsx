@@ -7,14 +7,14 @@ import { AiOutlineClose } from "react-icons/ai";
 import { Dialog, Transition } from "@headlessui/react";
 
 import Link from "next/link";
+import { Category } from "@/types";
 
 interface Props {
-  categoryFilters: string[];
+  categoryFilters: Category[];
 }
 
 export const Hamburger = ({ categoryFilters }: Props) => {
   const [open, setOpen] = useState(false);
-  console.log(categoryFilters);
 
   return (
     <div className="lg:hidden cursor-pointer">
@@ -79,10 +79,10 @@ export const Hamburger = ({ categoryFilters }: Props) => {
                         </Dialog.Title>
                       </div>
                       <div className="relative mt-6 flex flex-col text-xl gap-5 px-4 sm:px-6">
-                        {categoryFilters.map((item, i) => (
+                        {categoryFilters.map((item: any, i: number) => (
                           <Link
                             key={i}
-                            href={`/news/${item.toLocaleLowerCase()}`}
+                            href={`/news/${item.slug.current.toLocaleLowerCase()}`}
                           >
                             {item}
                           </Link>

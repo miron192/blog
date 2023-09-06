@@ -7,7 +7,7 @@ import { Category } from "@/types";
 import { fetchPosts } from "@/utils";
 
 const PostsList = async () => {
-  const posts: any = fetchPosts();
+  const posts = await fetchPosts();
 
   return (
     <>
