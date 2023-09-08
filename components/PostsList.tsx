@@ -14,7 +14,7 @@ const PostsList = async () => {
       {posts.map((post: Post, i: number) => (
         <Link
           href={`/post/${post.slug.current}`}
-          className=" mx-auto flex flex-col p-6 justify-center items-start text-black-100 border hover:bg-white hover:shadow-md rounded-2xl "
+          className=" mx-auto flex flex-col p-6 justify-center items-start text-black-100 border hover:bg-white hover:shadow-md max-w-[370px] rounded-2xl "
           key={i}
         >
           <Image
