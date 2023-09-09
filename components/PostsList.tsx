@@ -1,14 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { client } from "@/sanity//lib/client";
+
 import { urlForImage } from "@/sanity/lib/image";
-import { groq } from "next-sanity";
+
 import { Category, Post } from "@/types";
-import { fetchPosts } from "@/utils";
 
-const PostsList = async () => {
-  const posts = await fetchPosts();
-
+const PostsList = async ({ posts }: { posts: Post[] }) => {
   return (
     <>
       {posts.map((post: Post, i: number) => (
